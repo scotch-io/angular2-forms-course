@@ -1,4 +1,9 @@
-<form>
+<div class="jumbotron text-center" *ngIf="submitted">
+    <h2>Thanks for your submission!</h2>
+    <p>We appreciate it!</p>
+</div>
+
+<form (ngSubmit)="processForm()" *ngIf="!submitted">
 
     <div class="form-group">
         <label>Name</label>
