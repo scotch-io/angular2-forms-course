@@ -16,8 +16,8 @@ export class TemplateFormComponent implements OnInit {
 
   ngOnInit() {
     this.user = {
-      name: 'Chris',
-      username: 'sevilayha'
+      name: '',
+      username: ''
     };
   }
 

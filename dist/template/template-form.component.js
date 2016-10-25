@@ -21,8 +21,8 @@ var TemplateFormComponent = (function () {
     }
     TemplateFormComponent.prototype.ngOnInit = function () {
         this.user = {
-            name: 'Chris',
-            username: 'sevilayha'
+            name: '',
+            username: ''
         };
     };
     Object.defineProperty(TemplateFormComponent.prototype, "diagnostic", {
