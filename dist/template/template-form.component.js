@@ -9,9 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var User = (function () {
+    function User() {
+    }
+    return User;
+}());
+exports.User = User;
 var TemplateFormComponent = (function () {
     function TemplateFormComponent() {
     }
+    TemplateFormComponent.prototype.ngOnInit = function () {
+        this.user = {
+            name: 'Chris',
+            username: 'sevilayha'
+        };
+    };
+    Object.defineProperty(TemplateFormComponent.prototype, "diagnostic", {
+        get: function () {
+            return JSON.stringify(this.user);
+        },
+        enumerable: true,
+        configurable: true
+    });
     TemplateFormComponent = __decorate([
         core_1.Component({
             selector: 'template-form',
