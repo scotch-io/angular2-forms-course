@@ -13,6 +13,21 @@ var forms_1 = require('@angular/forms');
 var ReactiveFormComponent = (function () {
     function ReactiveFormComponent(fb) {
         this.fb = fb;
+        this.formErrors = {
+            name: '',
+            username: ''
+        };
+        this.validationMessages = {
+            name: {
+                required: 'Name is required.',
+                minlength: 'Name must be 3 characters.',
+                maxlength: 'Name can\'t be longer than 6 characters.'
+            },
+            username: {
+                required: 'Username is required.',
+                minlength: 'Username must be 3 characters.'
+            }
+        };
     }
     ReactiveFormComponent.prototype.ngOnInit = function () {
         // build the data model for our form
@@ -29,23 +44,19 @@ var ReactiveFormComponent = (function () {
         this.form.valueChanges.subscribe(function (data) { return _this.validateForm(); });
     };
     ReactiveFormComponent.prototype.validateForm = function () {
-        this.nameError = '';
-        this.usernameError = '';
-        var name = this.form.get('name');
-        var username = this.form.get('username');
-        if (name.invalid && name.dirty) {
-            if (name.errors['required'])
-                this.nameError = 'Name is required.';
-            if (name.errors['minlength'])
-                this.nameError = 'Name must be at least 3 characters.';
-            if (name.errors['maxlength'])
-                this.nameError = 'Name can\'t be more than 6 characters.';
-        }
-        if (username.invalid && username.dirty) {
-            if (username.errors['required'])
-                this.usernameError = 'Username is required.';
-            if (username.errors['minlength'])
-                this.usernameError = 'Username must be at least 3 characters.';
+        for (var field in this.formErrors) {
+            // clear that input field errors
+            this.formErrors[field] = '';
+            // grab an input field by name
+            var input = this.form.get(field);
+            if (input.invalid && input.dirty) {
+                // figure out the type of error
+                // loop over the formErrors field names
+                for (var error in input.errors) {
+                    // assign that type of error message to a variable
+                    this.formErrors[field] = this.validationMessages[field][error];
+                }
+            }
         }
     };
     ReactiveFormComponent.prototype.processForm = function () {
