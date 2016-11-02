@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var template_form_component_1 = require('./template/template-form.component');
+var reactive_form_component_1 = require('./reactive/reactive-form.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +25,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                template_form_component_1.TemplateFormComponent
+                template_form_component_1.TemplateFormComponent,
+                reactive_form_component_1.ReactiveFormComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

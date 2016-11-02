@@ -9,19 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.message = 'This is the sample message.';
+var ReactiveFormComponent = (function () {
+    function ReactiveFormComponent() {
     }
-    AppComponent = __decorate([
+    ReactiveFormComponent.prototype.ngOnInit = function () {
+        // build our form
+    };
+    ReactiveFormComponent.prototype.processForm = function () {
+        console.log('processing');
+    };
+    ReactiveFormComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            styles: ["\n    \n  "],
-            template: "\n    <h2>Template Form</h2>\n\n    <template-form></template-form>\n\n    <h2>Reactive Form</h2>\n\n    <reactive-form></reactive-form>\n  "
+            selector: 'reactive-form',
+            templateUrl: './app/reactive/reactive-form.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], ReactiveFormComponent);
+    return ReactiveFormComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.ReactiveFormComponent = ReactiveFormComponent;
+//# sourceMappingURL=reactive-form.component.js.map

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { TemplateFormComponent } from './template/template-form.component';
+import { ReactiveFormComponent } from './reactive/reactive-form.component';
 
 @NgModule({
   imports: [ 
@@ -12,7 +13,8 @@ import { TemplateFormComponent } from './template/template-form.component';
   ],
   declarations: [ 
     AppComponent,
-    TemplateFormComponent
+    TemplateFormComponent,
+    ReactiveFormComponent
   ],
   bootstrap: [ AppComponent ]
 })
