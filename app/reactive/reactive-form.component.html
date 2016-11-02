@@ -4,12 +4,20 @@
         <label for="name">Name</label>
         <input type="text" class="form-control" name="name" required
             formControlName="name">
+
+        <span class="help-block" *ngIf="nameError">
+            {{ nameError }}
+        </span>
     </div>
 
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" name="username" required
             formControlName="username">
+
+        <span class="help-block" *ngIf="usernameError">
+            {{ usernameError }}
+        </span>
     </div>
 
     <div class="form-group">

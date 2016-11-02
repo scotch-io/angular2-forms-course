@@ -15,12 +15,25 @@ var ReactiveFormComponent = (function () {
         this.fb = fb;
     }
     ReactiveFormComponent.prototype.ngOnInit = function () {
+        var _this = this;
         // build our form
         this.form = this.fb.group({
             name: [''],
             username: ['']
         });
-        console.log(this.form);
+        // watch for changes and validate
+        this.form.valueChanges.subscribe(function (data) {
+            console.log(data);
+            // validate each field
+            var name = _this.form.get('name');
+            var username = _this.form.get('username');
+            if (name.invalid && name.dirty) {
+                _this.nameError = 'Name is required.';
+            }
+            if (username.invalid && username.dirty) {
+                _this.usernameError = 'Username is required.';
+            }
+        });
     };
     ReactiveFormComponent.prototype.processForm = function () {
         console.log('processing', this.form.value);
