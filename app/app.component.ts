@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     
   `],
   template: `
-    <h2>Template Form</h2>
+    <!--<h2>Template Form</h2>
 
-    <template-form></template-form>
+    <template-form></template-form>-->
 
     <h2>Reactive Form</h2>
 
