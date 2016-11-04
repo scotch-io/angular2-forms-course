@@ -15,7 +15,10 @@ var ReactiveFormComponent = (function () {
         this.fb = fb;
         this.formErrors = {
             name: '',
-            username: ''
+            username: '',
+            addresses: [
+                { city: '', country: '' }
+            ]
         };
         this.validationMessages = {
             name: {
@@ -26,6 +29,15 @@ var ReactiveFormComponent = (function () {
             username: {
                 required: 'Username is required.',
                 minlength: 'Username must be 3 characters.'
+            },
+            addresses: {
+                city: {
+                    required: 'City is required.',
+                    minlength: 'City must be 3 characters.'
+                },
+                country: {
+                    required: 'Country is required.'
+                }
             }
         };
     }
@@ -33,6 +45,9 @@ var ReactiveFormComponent = (function () {
         // build the data model for our form
         this.buildForm();
     };
+    /**
+     * build the initial form
+     */
     ReactiveFormComponent.prototype.buildForm = function () {
         var _this = this;
         // build our form
@@ -40,16 +55,15 @@ var ReactiveFormComponent = (function () {
             name: ['', [forms_1.Validators.minLength(3), forms_1.Validators.maxLength(6)]],
             username: ['', forms_1.Validators.minLength(3)],
             addresses: this.fb.array([
-                this.fb.group({
-                    city: [''],
-                    country: ['']
-                })
+                this.createAddress()
             ])
         });
-        console.log(this.form);
         // watch for changes and validate
         this.form.valueChanges.subscribe(function (data) { return _this.validateForm(); });
     };
+    /**
+     * validate the entire form
+     */
     ReactiveFormComponent.prototype.validateForm = function () {
         for (var field in this.formErrors) {
             // clear that input field errors
@@ -65,13 +79,46 @@ var ReactiveFormComponent = (function () {
                 }
             }
         }
+        this.validateAddresses();
+    };
+    /**
+     * validate the addresses formarray
+     */
+    ReactiveFormComponent.prototype.validateAddresses = function () {
+        // grab the addresses formarray
+        var addresses = this.form.get('addresses');
+        // clear the form errors
+        this.formErrors.addresses = [];
+        // loop through however many formgroups are in the formarray
+        var n = 1;
+        while (n <= addresses.length) {
+            // add the clear errors back
+            this.formErrors.addresses.push({ city: '', country: '' });
+            // grab the specific group (address)
+            var address = addresses.at(n - 1);
+            // validate that specific group. loop through the groups controls
+            for (var field in address.controls) {
+                // get the formcontrol
+                var input = address.get(field);
+                // do the validation and save errors to formerrors if necessary 
+                if (input.invalid && input.dirty) {
+                    for (var error in input.errors) {
+                        this.formErrors.addresses[n - 1][field] = this.validationMessages.addresses[field][error];
+                    }
+                }
+            }
+            n++;
+        }
+    };
+    ReactiveFormComponent.prototype.createAddress = function () {
+        return this.fb.group({
+            city: ['', forms_1.Validators.minLength(3)],
+            country: ['']
+        });
     };
     ReactiveFormComponent.prototype.addAddress = function () {
         var addresses = this.form.get('addresses');
-        addresses.push(this.fb.group({
-            city: [''],
-            country: ['']
-        }));
+        addresses.push(this.createAddress());
     };
     ReactiveFormComponent.prototype.removeAddress = function (i) {
         var addresses = this.form.get('addresses');

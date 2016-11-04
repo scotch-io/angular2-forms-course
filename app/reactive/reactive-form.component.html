@@ -38,10 +38,8 @@
                         <label>City</label>
                         <input type="text" class="form-control" formControlName="city" required>
 
-                        <span class="help-block" 
-                            *ngIf="form.controls.addresses.controls[i].controls.city.errors
-                                && form.controls.addresses.controls[i].controls.city.dirty">
-                            City is required.
+                        <span class="help-block" *ngIf="formErrors.addresses[i].city">
+                            {{ formErrors.addresses[i].city }}
                         </span>
                     </div>
 
@@ -49,10 +47,8 @@
                         <label>Country</label>
                         <input type="text" class="form-control" formControlName="country" required>
 
-                        <span class="help-block" 
-                            *ngIf="form.controls.addresses.controls[i].controls.country.errors
-                                && form.controls.addresses.controls[i].controls.country.dirty">
-                            Country is required.
+                        <span class="help-block" *ngIf="formErrors.addresses[i].country">
+                            {{ formErrors.addresses[i].country }}
                         </span>
                     </div>
                 </div>
