@@ -66,6 +66,17 @@ var ReactiveFormComponent = (function () {
             }
         }
     };
+    ReactiveFormComponent.prototype.addAddress = function () {
+        var addresses = this.form.get('addresses');
+        addresses.push(this.fb.group({
+            city: [''],
+            country: ['']
+        }));
+    };
+    ReactiveFormComponent.prototype.removeAddress = function (i) {
+        var addresses = this.form.get('addresses');
+        addresses.removeAt(i);
+    };
     ReactiveFormComponent.prototype.processForm = function () {
         console.log('processing', this.form.value);
     };

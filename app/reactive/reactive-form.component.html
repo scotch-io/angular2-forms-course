@@ -27,6 +27,10 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     Address #{{ i + 1 }}
+
+                    <span *ngIf="form.controls.addresses.controls.length > 1" (click)="removeAddress(i)">
+                        Remove
+                    </span>
                 </div>
 
                 <div class="panel-body" [formGroupName]="i">
@@ -43,6 +47,11 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- add address button -->
+    <div class="text-right">
+        <a (click)="addAddress()" class="btn btn-info">Add Address</a>
     </div>
 
     <div class="form-group">
