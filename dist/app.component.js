@@ -17,7 +17,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             styles: ["\n    \n  "],
-            template: "\n    <!--<h2>Template Form</h2>\n\n    <template-form></template-form>-->\n\n    <h2>Reactive Form</h2>\n\n    <reactive-form></reactive-form>\n  "
+            template: "\n    <h2>Template Form</h2>\n\n    <template-form></template-form>\n\n    <h2>Reactive Form</h2>\n\n    <reactive-form></reactive-form>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
