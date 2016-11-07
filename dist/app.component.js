@@ -17,7 +17,7 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             styles: ["\n    \n  "],
-            template: "\n    <h2>Template Form</h2>\n\n    <template-form></template-form>\n\n    <h2>Reactive Form</h2>\n\n    <reactive-form></reactive-form>\n  "
+            template: "\n    <div class=\"jumbotron text-center\">\n      <h4 style=\"margin-bottom:0\">Scotch School Course Demo</h4>\n      <h2>Angular 2 Forms and Validation</h2>\n\n      <a href=\"https://school.scotch.io/angular-2-forms-and-validation\">View Course</a>\n    </div> \n    \n    <h2>Template Form</h2>\n\n    <template-form></template-form>\n\n    <h2>Reactive Form</h2>\n\n    <reactive-form></reactive-form>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

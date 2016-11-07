@@ -5,7 +5,7 @@
 
 <form (ngSubmit)="processForm()" *ngIf="!submitted" #form="ngForm">
 
-    Is Form Valid? {{ form.valid }}
+    <p>Is Form Valid? {{ form.valid }}</p>
 
     <div class="form-group" 
         [ngClass]="{ 
@@ -41,6 +41,6 @@
         <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Save</button>
     </div>
 
-    {{ diagnostic }}
+    <p>Form Value: {{ diagnostic }}</p>
 
 </form>
